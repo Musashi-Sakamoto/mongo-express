@@ -1,24 +1,24 @@
 import { Request, Response, NextFunction} from 'express'
-import User from '../models/userModel'
+import Blog from '../models/blogModel'
 
 export const index = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const users = await User.find({}).exec()
-    res.render('users/index', { users })
+    const blogs = await Blog.find({}).exec()
+    res.render('blogs/index', { blogs })
   } catch (error) {
     next(error)
   }
 }
 
 export const newPage = async (req: Request, res: Response, next: NextFunction) => {
-  res.render('users/new')
+  res.render('blogs/new')
 }
 
 export const create = async (req: Request, res: Response, next: NextFunction) => {
   try {
     console.log(req.body)
-    await User.create(req.body)
-    res.redirect('/users')
+    await Blog.create(req.body)
+    res.redirect('/blogs')
   } catch (err) {
     next(err)
   }
@@ -27,9 +27,9 @@ export const create = async (req: Request, res: Response, next: NextFunction) =>
 export const edit = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params
-    const user = await User.findById(id)
-    console.log('user: ', user)
-    res.render('users/edit', { user })
+    const blog = await Blog.findById(id)
+    console.log('blog: ', blog)
+    res.render('blogs/edit', { blog })
   } catch (err) {
     next(err)
   }
@@ -39,8 +39,8 @@ export const update = async (req: Request, res: Response, next: NextFunction) =>
   try {
     const { id } = req.params
     console.log(req.body)
-    await User.findByIdAndUpdate(id, {$set: req.body})
-    res.redirect('/users')
+    await Blog.findByIdAndUpdate(id, {$set: req.body})
+    res.redirect('/blogs')
   } catch (err) {
     next(err)
   }
@@ -50,8 +50,8 @@ export const remove = async (req: Request, res: Response, next: NextFunction) =>
   try {
     const { id } = req.params
     console.log(req.body)
-    await User.findByIdAndRemove(id)
-    res.redirect('/users')
+    await Blog.findByIdAndRemove(id)
+    res.redirect('/blogs')
   } catch (err) {
     next(err)
   }
