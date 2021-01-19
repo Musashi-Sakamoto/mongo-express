@@ -1,0 +1,13 @@
+<div class="data-form">
+  <form class="form-signin" action="<%= `/blogs/${blog._id}/update?_method=PUT` %>" method="post">
+    <h2 class="form-signin-heading">Edit Blog</h2>
+    <label for="inputTitle">title</label>
+    <input type="text" name="title" id="inputTitle" class="form-control" placeholder="title"
+      value="<%= blog.title %>" autofocus>
+    <label for="inputBody">Body</label>
+    <textarea type="text" name="body" id="inputBody" class="form-control"
+      placeholder="body"><%= blog.body %></textarea>
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+  </form>
+</div>
