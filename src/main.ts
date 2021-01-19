@@ -15,6 +15,8 @@ mongoose.connect(`mongodb://${process.env.DB_HOST}:27017/${process.env.DB_NAME}`
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
+import './models/commentModel'
+import './models/blogModel'
 
 const app = Express()
 const port = 3000

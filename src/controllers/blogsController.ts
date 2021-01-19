@@ -3,7 +3,8 @@ import Blog from '../models/blogModel'
 
 export const index = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const blogs = await Blog.find({}).exec()
+    const blogs = await Blog.find({}).populate('comments').exec()
+    console.log('blogs: ', blogs)
     res.render('blogs/index', { blogs })
   } catch (error) {
     next(error)

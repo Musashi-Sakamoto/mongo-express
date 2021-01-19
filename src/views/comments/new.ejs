@@ -1,0 +1,11 @@
+<div class="data-form">
+  <form class="form-signin" action="/comments/create" method="POST">
+    <h2>Create a new comment for <%= blog.title %></h2>
+    <input id="blogId" name="blogId" type="hidden" value="<%= blog._id %>">
+    <label for="inputAuthor">author</label>
+    <input class="form-control" type="text" name="author" id="inputAuthor" placeholder="author" autofocus required>
+    <label for="inputComment">Comment</label>
+    <textarea class="form-control" type="text" name="comment" id="inputComment" placeholder="comment" required></textarea>
+    <br /><button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+  </form>
+</div>
