@@ -71,7 +71,7 @@ export const like = async (req: Request, res: Response, next: NextFunction) => {
 export const dislike = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { blogId } = req.params
-    await Blog.findByIdAndUpdate(blogId, {$inc: { likes: 1 }})
+    await Blog.findByIdAndUpdate(blogId, {$inc: { dislikes: 1 }})
     res.send('success')
   } catch (err) {
     next(err)
