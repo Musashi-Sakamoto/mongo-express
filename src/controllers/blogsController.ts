@@ -57,3 +57,23 @@ export const remove = async (req: Request, res: Response, next: NextFunction) =>
     next(err)
   }
 }
+
+export const like = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { blogId } = req.params
+    await Blog.findByIdAndUpdate(blogId, {$inc: { likes: 1 }})
+    res.send('success')
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const dislike = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { blogId } = req.params
+    await Blog.findByIdAndUpdate(blogId, {$inc: { likes: 1 }})
+    res.send('success')
+  } catch (err) {
+    next(err)
+  }
+}

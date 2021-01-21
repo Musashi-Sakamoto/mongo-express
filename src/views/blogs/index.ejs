@@ -8,6 +8,8 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +19,12 @@
           <%= blog.title %>
         </td>
         <td><%= blog.body %></td>
+        <td>
+          <button class="btn btn-block btn-primary like" id="<%= blog._id %>"><i class="fa fa-thumbs-up"><%= blog.likes %></i> </button>
+        </td>
+        <td>
+          <button class="btn btn-block btn-primary dislike" id="<%= blog._id %>"><i class="fa fa-thumbs-down"><%= blog.dislikes %></i> </button>
+        </td>
         <td>
           <a href="<%= `/blogs/${blog._id}/edit` %>">Edit</a>
         </td>

@@ -12,5 +12,7 @@ router.put('/:id/update', blogsController.update)
 router.delete('/:id/delete', blogsController.remove)
 
 router.get('/:blogId/comments/new', commentsController.newPage)
+router.put('/:blogId/like', blogsController.like)
+router.put('/:blogId/dislike', blogsController.dislike)
 
 export default router
