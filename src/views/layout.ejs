@@ -8,32 +8,23 @@
   <script src="http://code.jquery.com/jquery-3.1.0.min.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
   <script language="javascript" src="/js/bootstrap.min.js" defer></script>
   <script language="javascript" src="/js/like.js" defer></script>
 </head>
 
 <body>
   <header>
-    <div id="nav">
-      <div class="col-sm nav-align">
-        <h1 id="title">Express</h1>
-      </div>
-      <div class="col-sm nav-align">
-        <a href="/">
-          <span class="button">Home</span>
-        </a>
-        <a href="/blogs">
-          <span class="button">Blogs</span>
-        </a>
-      </div>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="px-4 navbar-brand" href="/blogs">Blogs</a>
+    </nav>
   </header>
 
-  <div class="container">
+  <div class="container main pt-4">
     <%- body %>
   </div>
 
-  <footer>
+  <footer class="bg-light text-center py-3">
     footer
   </footer>
 </body>
