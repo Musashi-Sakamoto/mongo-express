@@ -6,27 +6,44 @@
       <th>Body</th>
       <th></th>
       <th></th>
+      <th></th>
+      <th><a class="btn btn-primary" href="/blogs/new" role="button">Create a blog</a>
+      </th>
     </tr>
   </thead>
   <tbody>
     <% blogs.forEach(blog => { %>
       <tr>
-        <td>
+        <td colspan="1">
           <%= blog.title %>
         </td>
-        <td><%= blog.body %></td>
-        <td>
-          <a href="<%= `/blogs/${blog._id}/edit` %>">Edit</a>
+        <td colspan="3"><%= blog.body %></td>
+        <td colspan="1">
+          <button class="btn btn-block btn-primary like" id="<%= blog._id %>"><i class="fa fa-thumbs-up"><%= blog.likes %></i> </button>
+          <button class="btn btn-block btn-primary dislike" id="<%= blog._id %>"><i class="fa fa-thumbs-down"><%= blog.dislikes %></i> </button>
         </td>
-        <td>
+        <td colspan="1">
+          <a class="btn btn-outline-success" href="<%= `/blogs/${blog._id}/edit` %>">Edit</a>
           <a 
+            class="btn btn-outline-danger"
             href="<%= `/blogs/${blog._id}/delete?_method=DELETE` %>"
             onclick="return confirm('本当にこのブログを削除しますか？')"
           >
             DELETE
           </a>
+          <a 
+            href="<%= `/blogs/${blog._id}/comments/new` %>"
+          >
+          <i class="fa fa-plus">comment</i> 
+          </a>
         </td>
       </tr>
+      <% blog.comments.forEach(comment => { %>
+        <tr>
+          <td class="text-center border-0" colspan="2"><%= comment.author %></td>
+          <td class="text-center border-0" colspan="4"><%= comment.comment %></td>
+        </tr>
+      <% }) %>
     <% }) %>
   </tbody>
 </table>

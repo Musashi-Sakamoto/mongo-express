@@ -4,8 +4,8 @@ export interface BlogDoc extends Document {
   title: String
   body: String
   comments: []
-  likes: []
-  dislikes: []
+  likes: Number
+  dislikes: Number
 }
 
 const blogSchema: Schema = new Schema(
@@ -23,9 +23,13 @@ const blogSchema: Schema = new Schema(
     comments: [{ type: Schema.Types.ObjectId, ref: 'Comment'}],
     likes: {
       type: Number,
+      min: 0,
+      default: 0
     },
     dislikes: {
       type: Number,
+      min: 0,
+      default: 0
     },
   },
   {

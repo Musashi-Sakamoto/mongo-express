@@ -3,7 +3,8 @@ import Blog from '../models/blogModel'
 
 export const index = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const blogs = await Blog.find({}).exec()
+    const blogs = await Blog.find({}).populate('comments').exec()
+    console.log('blogs: ', blogs)
     res.render('blogs/index', { blogs })
   } catch (error) {
     next(error)
@@ -52,6 +53,26 @@ export const remove = async (req: Request, res: Response, next: NextFunction) =>
     console.log(req.body)
     await Blog.findByIdAndRemove(id)
     res.redirect('/blogs')
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const like = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { blogId } = req.params
+    await Blog.findByIdAndUpdate(blogId, {$inc: { likes: 1 }})
+    res.send('success')
+  } catch (err) {
+    next(err)
+  }
+}
+
+export const dislike = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { blogId } = req.params
+    await Blog.findByIdAndUpdate(blogId, {$inc: { dislikes: 1 }})
+    res.send('success')
   } catch (err) {
     next(err)
   }
